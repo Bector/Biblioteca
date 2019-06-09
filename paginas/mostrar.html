@@ -11,49 +11,27 @@
 
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+    <script src="index.js"></script>
 
-    <title>Ingreso</title>
+
+    <title>Inicio</title>
+
 </head>
 
-<body>
-
+<body background="fondo.jpg">
     <header>
         <nav class="red darken-4">
-
-            <div class="nav-wrapper m6">
+            <div class="nav-wrapper">
                 <a href="index.html" class="right">Cerrar sesión</a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li><a href="home.html">Inicio</a></li>
-                    <li><a href="eliminar.html">eliminar</a></li>
-                    <li><a href="modificar.html">modificar</a></li>
+                    <li><a href="mostrar.html">Mostrar</a></li>
                 </ul>
             </div>
-
-
         </nav>
     </header>
 
-    <section class="container section">
-        <div class="row">
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input name="nombre" id="nombre" type="text">
-                        <label>Nombre del libro</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input name="autor" id="autor" type="text">
-                        <label for="last_name">Autor</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input name="editorial" id="editorial" type="text">
-                        <label for="last_name">Editorial</label>
-                    </div>
-                </div>
-                <button onclick="agregarDatos()">Aceptar</button>
-                <script src="index.js"></script>
-        </div>
-    </section>
-
+    <button onclick="verDatos()">Aceptar</button>
 
     <footer class="page-footer red darken-4">
         <div class="container">
@@ -81,6 +59,14 @@
             </div>
         </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.tabs').tabs();
+        });
+    </script>
 
 </body>
 

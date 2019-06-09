@@ -8,23 +8,24 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
 
-    <script src="/__/firebase/6.1.1/firebase-app.js"></script>
-    <script src="/__/firebase/init.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+    
 
 
     <title>Inicio</title>
 
 </head>
 
-<body>
+<body background="fondo.jpg">
     <header>
         <nav class="red darken-4">
             <div class="nav-wrapper">
                 <a href="index.html" class="right">Cerrar sesión</a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li><a href="home.html">Inicio</a></li>
+                    <li><a href="ingreso.html">Ingresar</a></li>
                     <li><a href="eliminar.html">eliminar</a></li>
                     <li><a href="modificar.html">modificar</a></li>
                 </ul>
@@ -32,8 +33,8 @@
         </nav>
     </header>
 
-    <section class="container section" id="services">
-        <div class="row">
+    <section class=" section" id="services">
+        <div class="row card">
             <div class="col s12 l4">
                 <h2 class="indigo-text text-darken-4">Menú con tabs</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, accusamus minima. Autem delectus
@@ -42,41 +43,91 @@
             </div>
             <div class="col s12 l6 offset-l2">
                 <ul class="tabs">
-                    <li class="tab col s6">
+                    <li class="tab">
                         <a href="#ingresar" class="indigo-text text-darken-4">Ingresar</a>
                     </li>
-                    <li class="tab col s6">
-                        <a href="#editing" class="indigo-text text-darken-4">Editing</a>
+                    <li class="tab">
+                        <a href="#modificar" class="indigo-text text-darken-4">Modificar</a>
+                    </li>
+                    <li class="tab">
+                        <a href="#mostrar" class="indigo-text text-darken-4">Mostrar</a>
+                    </li>
+                    <li class="tab">
+                        <a href="#eliminar" class="indigo-text text-darken-4">Eliminar</a>
                     </li>
                 </ul>
                 <div class="col s12" id="ingresar">
                     <div class="row">
-                        <form class="col s12">
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <input name="nombre" id="nombre" type="text">
-                                    <label>Nombre del libro</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <input name="autor" id="autor" type="text">
-                                    <label for="last_name">Autor</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <input name="editorial" id="editorial" type="text">
-                                    <label for="last_name">Editorial</label>
-                                </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input name="nombre" id="nombre" type="text">
+                                <label>Nombre del libro</label>
                             </div>
-                            <button onclick="agregarDatos()">Aceptar</button>
-                            <script src="index.js"></script>
-                        </form>
+                            <div class="input-field col s6">
+                                <input name="autor" id="autor" type="text">
+                                <label for="last_name">Autor</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input name="editorial" id="editorial" type="text">
+                                <label for="last_name">Editorial</label>
+                            </div>
+                        </div>
+                        <button onclick="agregarDatos()">Aceptar</button>
                     </div>
                 </div>
-                <div class="col s12" id="editing">
-                    <p class="flow-text indigo-text text-darken-4">EDITING</p>
-                    <p>Loreasdm ipsum dolor sit amet consectetur adipisicing elit. Velit, accusamus minima. Autem
-                        delectus
-                        consequuntur impedit dignissimos! Pariatur, optio. Magnam vero quam voluptates dolor ipsum rerum
-                        eveniet, modi repellendus illo accusantium!</p>
+                <div class="col s12" id="eliminar">
+                        <div class="row">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="id" name="id" type="text" class="validate">
+                                    <label>ID del libro</label>
+                                </div>
+                            </div>
+                            <button onclick="eliminarDatos()">Aceptar</button>
+                        </div>
+                    </div>
+                <div class="col s12" id="modificar">
+                    <div class="row">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="ID" id="ID" type="text" class="validate">
+                                <label>ID del libro</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                                <label>Nombre del libro</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="last_name" type="text" class="validate">
+                                <label>Autor</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="editorial" type="text" class="validate">
+                                <label>Editorial</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12" id="mostrar">
+                    <div class="row">
+                        <div class="row">
+                            <button onclick="verDatos()">Aceptar</button>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>ID</td>
+                                        <td>NOMBRE</td>
+                                        <td>AUTOR</td>
+                                        <td>EDITORIAL</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="cuerpo">
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -119,7 +170,7 @@
             $('.tabs').tabs();
         });
     </script>
-
+<script src="index.js"></script>
 </body>
 
 
