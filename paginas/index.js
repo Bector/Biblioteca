@@ -66,20 +66,9 @@ function modificarDatos() {
 
     var washingtonRef = db.collection("libros").doc(id);
 
-    if(campo=="autor"){
+    if (campo == "autor") {
         return washingtonRef.update({
-        autor:nuevo,
-    })
-        .then(function () {
-            console.log("Document successfully updated!");
-            alert("Datos modificados con exito");
-        })
-        .catch(function (error) {
-            console.error("Error updating document: ", error);
-        });
-    }else if(campo=="nombre"){
-        return washingtonRef.update({
-            nombre:nuevo,
+            autor: nuevo,
         })
             .then(function () {
                 console.log("Document successfully updated!");
@@ -88,9 +77,20 @@ function modificarDatos() {
             .catch(function (error) {
                 console.error("Error updating document: ", error);
             });
-    }else if(campo=="editorial"){
+    } else if (campo == "nombre") {
         return washingtonRef.update({
-            editorial:nuevo,
+            nombre: nuevo,
+        })
+            .then(function () {
+                console.log("Document successfully updated!");
+                alert("Datos modificados con exito");
+            })
+            .catch(function (error) {
+                console.error("Error updating document: ", error);
+            });
+    } else if (campo == "editorial") {
+        return washingtonRef.update({
+            editorial: nuevo,
         })
             .then(function () {
                 console.log("Document successfully updated!");
@@ -102,5 +102,34 @@ function modificarDatos() {
     }
 
     // Set the "capital" field of the city 'DC'
-    
+
+}
+
+
+function inicio() {
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    var uiConfig = {
+        callbacks: {
+            signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+
+                return true;
+            },
+            uiShown: function () {
+
+                document.getElementById('loader').style.display = 'none';
+            }
+        },
+
+        signInFlow: 'popup',
+        signInSuccessUrl: 'home.html',
+        signInOptions: [
+
+            
+            firebase.auth.EmailAuthProvider.PROVIDER_ID,
+
+        ],
+
+        tosUrl: 'home.html'
+    };
+    ui.start('#firebaseui-auth-container', uiConfig);
 }
