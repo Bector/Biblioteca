@@ -47,11 +47,33 @@ function verDatos() {
 }
 
 function eliminarDatos() {
-    var id=document.getElementById("id").value;
+    var id = document.getElementById("id").value;
     db.collection("libros").doc(id).delete().then(function () {
         console.log("Document successfully deleted!");
         alert("Datos eliminados con exito");
     }).catch(function (error) {
         console.error("Error removing document: ", error);
     });
+}
+
+function modificarDatos() {
+    var id = document.getElementById("id").value;
+    var nombre = document.getElementById("nombre").value;
+    var autor = document.getElementById("autor").value;
+    var editorial = document.getElementById("editorial").value;
+
+    console.log("Datos:" + nombre + "-" + autor + "-" + editorial);
+
+    db.collection("libros").doc(id).set({
+        nombre: nombre,
+        autor: autor,
+        editorial: editorial
+    })
+        .then(function () {
+            console.log("Document successfully written!");
+            alert("Datos ingresados con exito");
+        })
+        .catch(function (error) {
+            console.error("Error writing document: ", error);
+        });
 }

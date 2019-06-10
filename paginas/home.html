@@ -11,7 +11,7 @@
 
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
-    
+
 
 
     <title>Inicio</title>
@@ -71,35 +71,37 @@
                     </div>
                 </div>
                 <div class="col s12" id="eliminar">
+                    <div class="row">
                         <div class="row">
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <input id="id" name="id" type="text" class="validate">
-                                    <label>ID del libro</label>
-                                </div>
+                            <div class="input-field col s6">
+                                <input id="id" name="id" type="text" class="validate">
+                                <label>ID del libro</label>
                             </div>
-                            <button onclick="eliminarDatos()">Aceptar</button>
                         </div>
+                        <button onclick="eliminarDatos()">Aceptar</button>
                     </div>
+                </div>
                 <div class="col s12" id="modificar">
                     <div class="row">
                         <div class="row">
                             <div class="input-field col s6">
-                                <input placeholder="ID" id="ID" type="text" class="validate">
+                                <input id="id" name="id" type="text" class="validate">
                                 <label>ID del libro</label>
                             </div>
                             <div class="input-field col s6">
-                                <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                                <input name="nombre" id="nombre" type="text">
                                 <label>Nombre del libro</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="last_name" type="text" class="validate">
-                                <label>Autor</label>
+                                <input name="autor" id="autor" type="text">
+                                <label for="last_name">Autor</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="editorial" type="text" class="validate">
-                                <label>Editorial</label>
+                                <input name="editorial" id="editorial" type="text">
+                                <label for="last_name">Editorial</label>
                             </div>
+
+                            <button onclick="modificarDatos()">Modificar</button>
                         </div>
                     </div>
                 </div>
@@ -165,7 +167,7 @@
             $('.tabs').tabs();
         });
     </script>
-<script src="index.js"></script>
+    <script src="index.js"></script>
 </body>
 
 
