@@ -25,6 +25,7 @@ function agregarDatos() {
         })
         .catch(function (error) {
             console.error("Error writing document: ", error);
+            alert("Error", error);
         });
 }
 
