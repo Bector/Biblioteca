@@ -57,23 +57,49 @@ function eliminarDatos() {
 }
 
 function modificarDatos() {
-    var id = document.getElementById("id").value;
-    var nombre = document.getElementById("nombre").value;
-    var autor = document.getElementById("autor").value;
-    var editorial = document.getElementById("editorial").value;
+    var id = document.getElementById("id2").value;
+    var campo = document.getElementById("campo").value;
+    var nuevo = document.getElementById("nuevo").value;
 
-    console.log("Datos:" + nombre + "-" + autor + "-" + editorial);
+    console.log("Datos:" + id + "-" + campo + "-" + nuevo);
 
-    db.collection("libros").doc(id).set({
-        nombre: nombre,
-        autor: autor,
-        editorial: editorial
+    var washingtonRef = db.collection("libros").doc(id);
+
+    if(campo=="autor"){
+        return washingtonRef.update({
+        autor:nuevo,
     })
         .then(function () {
-            console.log("Document successfully written!");
-            alert("Datos ingresados con exito");
+            console.log("Document successfully updated!");
+            alert("Datos modificados con exito");
         })
         .catch(function (error) {
-            console.error("Error writing document: ", error);
+            console.error("Error updating document: ", error);
         });
+    }else if(campo=="nombre"){
+        return washingtonRef.update({
+            nombre:nuevo,
+        })
+            .then(function () {
+                console.log("Document successfully updated!");
+                alert("Datos modificados con exito");
+            })
+            .catch(function (error) {
+                console.error("Error updating document: ", error);
+            });
+    }else if(campo=="editorial"){
+        return washingtonRef.update({
+            editorial:nuevo,
+        })
+            .then(function () {
+                console.log("Document successfully updated!");
+                alert("Datos modificados con exito");
+            })
+            .catch(function (error) {
+                console.error("Error updating document: ", error);
+            });
+    }
+
+    // Set the "capital" field of the city 'DC'
+    
 }
