@@ -104,32 +104,24 @@ function modificarDatos() {
     // Set the "capital" field of the city 'DC'
 
 }
-
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        document.getElementById("user").style.display = "block";
+        document.getElementById("login").style.display = "none";
+    } else {
+        document.getElementById("user").style.display = "none";
+        document.getElementById("login").style.display = "block";
+    }
+});
 
 function inicio() {
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-    var uiConfig = {
-        callbacks: {
-            signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+    var usuario = document.getElementById("email_field").value;
+    var pass = document.getElementById("password_field").value;
 
-                return true;
-            },
-            uiShown: function () {
-
-                document.getElementById('loader').style.display = 'none';
-            }
-        },
-
-        signInFlow: 'popup',
-        signInSuccessUrl: 'home.html',
-        signInOptions: [
-
-            
-            firebase.auth.EmailAuthProvider.PROVIDER_ID,
-
-        ],
-
-        tosUrl: 'home.html'
-    };
-    ui.start('#firebaseui-auth-container', uiConfig);
+    firebase.auth().signInWithEmailAndPassword(usuario, pass).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert("Error: " + errorMessage);
+    });
 }
