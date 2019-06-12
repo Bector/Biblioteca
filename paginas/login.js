@@ -6,10 +6,12 @@ firebase.auth().onAuthStateChanged(function (user) {
         if (user != null) {
             var email_id = user.email;
             document.getElementById("user_para").innerHTML = "Bienvenido " + email_id;
+            window.location="home.html";
         }
     } else {
         document.getElementById("user").style.display = "none";
         document.getElementById("login").style.display = "block";
+
     }
 });
 
@@ -26,4 +28,6 @@ function login() {
 }
 function salir() {
     firebase.auth().signOut();
+    window.location="login.html";
 }
+

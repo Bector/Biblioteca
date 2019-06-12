@@ -1,11 +1,17 @@
-firebase.initializeApp({
+var firebaseConfig = {
     apiKey: "AIzaSyBk0QDRFS7tflVY974PRfgad0YrSsIiiGk",
     authDomain: "biblioteca-d01e8.firebaseapp.com",
-    projectId: "biblioteca-d01e8"
-});
-
+    databaseURL: "https://biblioteca-d01e8.firebaseio.com",
+    projectId: "biblioteca-d01e8",
+    storageBucket: "biblioteca-d01e8.appspot.com",
+    messagingSenderId: "334355289451",
+    appId: "1:334355289451:web:083cb3d428929b84"
+};
+firebase.initializeApp(firebaseConfig);
 // Initialize Cloud Firestore through Firebase
 var db = firebase.firestore();
+
+
 
 function agregarDatos() {
     var nombre = document.getElementById("nombre").value;
@@ -108,13 +114,20 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         document.getElementById("user").style.display = "block";
         document.getElementById("login").style.display = "none";
+        var user = firebase.auth().currentUser;
+        if (user != null) {
+            var email_id = user.email;
+            document.getElementById("user_para").innerHTML = "Bienvenido " + email_id;
+            window.location="home.html";
+        }
     } else {
         document.getElementById("user").style.display = "none";
         document.getElementById("login").style.display = "block";
+
     }
 });
 
-function inicio() {
+function login() {
     var usuario = document.getElementById("email_field").value;
     var pass = document.getElementById("password_field").value;
 
@@ -125,3 +138,8 @@ function inicio() {
         alert("Error: " + errorMessage);
     });
 }
+function salir() {
+    firebase.auth().signOut();
+    window.location="index.html";
+}
+

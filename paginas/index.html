@@ -5,45 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inicio</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
-    <script src="css.css"></script>
-
-    <title>Inicio</title>
 
 </head>
 
-<body background="fondo.jpg">
+<body background="fondo.jpg" id="body">
     <section class="container section">
         <div class="container" id="login">
             <div class="container row">
-                <div class="col s12 ">
+                <div class="col s12">
                     <div class="card red darken-4 darken-1">
                         <div class="card-content white-text">
                             <span class="card-title">Inicio de sesión</span>
                         </div>
                         <div class="card-action">
                             <div class="row">
-                                <form class="col s12">
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <input placeholder="Ej: pepe" id="first_name" type="text" class="validate">
-                                            <label for="first_name">Nombre de usuario</label>
-                                        </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input type="email" placeholder="Email" id="email_field">
+                                        <label for="first_name">Email</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="password" placeholder="Ej: 123456" type="password" class="validate">
-                                            <label for="password">Contraseña</label>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input type="password" placeholder="Password" id="password_field">
+                                        <label for="password">Password</label>
                                     </div>
-                                    <a class="waves-effect waves-light btn" href="home.html">Iniciar sesión</a>
-                                    <button onclick="inicio()">Acceder</button>
-                                </form>
+                                </div>
+                                <button onclick="login()">Acceder</button>
                             </div>
                         </div>
                     </div>
@@ -52,29 +46,23 @@
         </div>
 
     </section>
-    <section class="container section">
-        <div class="container" id="user">
-            <div class="container row">
-                <div class="col s12 ">
-                    <div class="card red darken-4 darken-1">
-                        <div class="card-content white-text">
-                            <span class="card-title">Inicio de sesión</span>
-                        </div> 
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
 
 
+    <div id="user">
+        <h3>Usted esta logeado</h3>
+        <p id="user_para">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur hic repellendus earum
+            minus rem quas
+            praesentium doloremque distinctio. Facere quo architecto perspiciatis ullam esse laudantium aliquid vel
+            expedita alias cum.</p>
+        <button onclick="salir()">Salir</button>
+    </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+ 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+    <script>
+        
+    </script>
     <script src="index.js"></script>
 </body>
-
 
 </html>
